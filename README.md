@@ -15,8 +15,11 @@ import (
 
 func main() {
 
-	result, steps := sqrt.Sqrt(big.NewInt(100000000), big.NewInt(16))
-	log.Printf("Result: %v, Steps: %d", result, steps)
+    result, steps := sqrt.Sqrt(big.NewInt(153688), big.NewInt(7))
+    log.Printf("Result: %v, Steps: %d", result, steps)
+
+    resultWithPrecision, steps := sqrt.PrecisionSqrt(big.NewInt(153688), big.NewInt(7), 3)
+    log.Printf("Result: %v, Steps: %d", resultWithPrecision, steps)
 
 }
 ```

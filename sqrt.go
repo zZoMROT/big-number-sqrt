@@ -4,6 +4,19 @@ import (
 	"math/big"
 )
 
+func PrecisionSqrt(c *big.Int, rank *big.Int, precision int64) (result string, steps int) {
+
+	addDigits := new(big.Int).Exp(big.NewInt(10), new(big.Int).Mul(big.NewInt(precision), rank), nil)
+
+	preResult, steps := Sqrt(new(big.Int).Mul(c, addDigits), rank)
+
+	preResultStr := preResult.String()
+
+	result = preResultStr[:int64(len(preResultStr))-precision] + "." + preResultStr[int64(len(preResultStr))-precision:]
+
+	return result, steps
+}
+
 func Sqrt(c *big.Int, rank *big.Int) (result *big.Int, steps int) {
 
 	var prevResult *big.Int
